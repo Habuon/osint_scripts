@@ -67,7 +67,7 @@ def obtain_org_name(ip: str) -> str:
 def identify_dns_wildcard(base):
 	possible_wildcards = dict()
 	for _ in range(10):
-		random_sub = [random.choice(ascii_lowercase) for x in range(10)]
+		random_sub = "".join([random.choice(ascii_lowercase) for x in range(10)])
 		command = f"dig +short a {random_sub}.{base}"
 		with Popen(command, stdout=PIPE, stderr=STDOUT, shell=True) as process:
 			output = process.communicate()[0].decode("utf-8").strip().split("\n")
